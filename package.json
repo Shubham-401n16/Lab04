@@ -1,0 +1,34 @@
+{
+  "name": "Lab04",
+  "version": "1.0.0",
+  "description": "## Data Modeling & NoSQL Databases",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "lint": "eslint **/.js",
+    "test": "jest --coverage --verbose",
+    "test-watch": "jest --watchAll --coverage --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubham-401n16/Lab04.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shubham-401n16/Lab04/issues"
+  },
+  "homepage": "https://github.com/Shubham-401n16/Lab04#readme",
+  "dependencies": {
+    "@code-fellows/supergoose": "^1.0.2",
+    "dotenv": "^8.2.0",
+    "minimist": "^1.2.5",
+    "mongoose": "^5.9.6"
+  },
+  "devDependencies": {
+    "jest": "^25.2.3"
+  }
+}

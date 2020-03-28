@@ -19,6 +19,7 @@ class Model {
 
     async read(_id) {
         // first, validate that this is an id
+        let allNotes = await this.model.find();
         try {
             if (!typeof _id === mongoose.ObjectId) throw 'err';
             let foundRecords = await this.model.find({ _id });
@@ -27,18 +28,26 @@ class Model {
         } catch (e) {
             console.log('---ERROR READING RECORD---');
             return false;
+            allNotes.forEach(element =>{
+                console.log(`Notes : ${element.notes} , NotesId : ${element._id}`)
+            })
+            return allNotes
         }
     }
 
+
     async update(_id, changedRecord) {
-        return this.schema.findByIdAndUpdate(id, changedRecord, { new: true });
+        return this.model.updateOne(id, changedRecord, { new: true });
     }
 
     async delete(_id) {
-        return this.schema.findByIdAndDelete(id);
+
+        let deleteOne = await this.model.deleteOne({_id});
+        if(!deleteOne.deletedCount) throw 'err'
+        else console.log(`Deleted noted : ${deleteOne}`)
     }
 }
 
-let notesModel = new Model(notesMongooseModel);
+let NotesModel = new Model(notesMongooseModel);
 
-module.exports = notesModel;
+module.exports = NotesModel;

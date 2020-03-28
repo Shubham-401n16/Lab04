@@ -10,12 +10,37 @@ const notesSchema = mongoose.Schema({
 notesSchema.pre('save', function() {
   console.log('attempting to save record:');
   console.log(this);
-  console.log('-----');
 });
 
 notesSchema.post('save', function() {
   console.log('successfully saved!');
-  console.log('-----');
+});
+
+notesSchema.pre('findByIdAndUpdate', function() {
+  console.log('attempting to update record:');
+  console.log(this);
+});
+
+notesSchema.post('findByIdAndUpdate', function() {
+  console.log('successfully updated!');
+});
+
+notesSchema.pre('findByIdAndDelete', function() {
+  console.log('attempting to delete record:');
+  console.log(this);
+});
+
+notesSchema.post('findByIdAndDelete', function() {
+  console.log('successfully deleted!');
+});
+
+notesSchema.pre('find', function() {
+  console.log('attempting to find record:');
+  console.log(this);
+});
+
+notesSchema.post('find', function() {
+  console.log('successfully found!');
 });
   
 const notesModel = mongoose.model('notes',notesSchema);

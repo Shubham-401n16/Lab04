@@ -1,10 +1,6 @@
 'use strict';
 const Input = require('../lib/input.js');
 
-
-
-
-
 describe('Input validation', () => {
     it('validate invalid flag', () =>{
         const invalidFlag = ['-w','This is a test'];

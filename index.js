@@ -9,7 +9,7 @@ const NoteActionHandler = require('./lib/notes.js');
 const Input = require('./lib/input.js')
 
 
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/models`, {
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/Lab04`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -18,4 +18,4 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/models`, 
 let entry = process.argv.slice(2);
 
 let userInput = new Input(entry);
-let userNote = new NoteActionHandler(userInput.command);
+let userNote = new NoteActionHandler(userInput);

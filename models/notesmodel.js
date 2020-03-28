@@ -28,10 +28,10 @@ class Model {
         } catch (e) {
             console.log('---ERROR READING RECORD---');
             return false;
-            allNotes.forEach(element =>{
-                console.log(`Notes : ${element.notes} , NotesId : ${element._id}`)
-            })
-            return allNotes
+            // allNotes.forEach(element =>{
+            //     console.log(`Notes : ${element.notes} , NotesId : ${element._id}`)
+            // })
+            // return allNotes
         }
     }
 

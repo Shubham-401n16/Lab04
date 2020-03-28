@@ -25,12 +25,12 @@ notesSchema.post('findByIdAndUpdate', function() {
   console.log('successfully updated!');
 });
 
-notesSchema.pre('findByIdAndDelete', function() {
+notesSchema.pre('deleteOne', function() {
   console.log('attempting to delete record:');
   console.log(this);
 });
 
-notesSchema.post('findByIdAndDelete', function() {
+notesSchema.post('deleteOne', function() {
   console.log('successfully deleted!');
 });
 

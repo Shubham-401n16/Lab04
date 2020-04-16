@@ -25,7 +25,6 @@ class Model {
                   return notes.category.includes(category);
                 });
             }
-            //else{ throw 'No such category';}
             if(allNotes.length < 1){
                 console.log('No notes');
             }

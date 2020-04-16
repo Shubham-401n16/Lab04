@@ -17,34 +17,46 @@ class Model {
         }
     }
 
-    async read(_id) {
-        // first, validate that this is an id
+    async read(category) {
         let allNotes = await this.model.find();
         try {
-            if (!typeof _id === mongoose.ObjectId) throw 'err';
-            let foundRecords = await this.model.find({ _id });
-            if (foundRecords.length) return foundRecords[0];
-            else throw 'err';
+            if(category){
+              allNotes = allNotes.filter(notes => {
+                  return notes.category.includes(category);
+                });
+            }
+            //else{ throw 'No such category';}
+            if(allNotes.length < 1){
+                console.log('No notes');
+            }
+    
         } catch (e) {
             console.log('---ERROR READING RECORD---');
             return false;
-            // allNotes.forEach(element =>{
-            //     console.log(`Notes : ${element.notes} , NotesId : ${element._id}`)
-            // })
-            // return allNotes
         }
+        allNotes.forEach(notes => {
+            console.log(`note : ${notes.note} , id : ${notes._id}`)
+        });
+        return allNotes;
     }
 
 
     async update(_id, changedRecord) {
-        return this.model.updateOne(id, changedRecord, { new: true });
+        return await this.model.updateOne({_id}, changedRecord);
     }
 
     async delete(_id) {
-
-        let deleteOne = await this.model.deleteOne({_id});
-        if(!deleteOne.deletedCount) throw 'err'
-        else console.log(`Deleted noted : ${deleteOne}`)
+        try{
+                let deleteOne = await this.model.deleteOne({_id});
+                if(!deleteOne.deletedCount) throw 'err'
+                else console.log(`Deleted note : ${deleteOne.deletedCount}`)
+                return deleteOne;
+        }catch(e){
+            console.error('No Id to delete');
+            return false;
+        }
+            
+    
     }
 }
 

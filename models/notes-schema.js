@@ -4,12 +4,11 @@ const mongoose = require('mongoose');
 
 const notesSchema = mongoose.Schema({
   note: { type: String , required: true },
-  categoryId: {type: String, required: false}
+  category: {type: Array, required: false}
 });
 
 notesSchema.pre('save', function() {
   console.log('attempting to save record:');
-  console.log(this);
 });
 
 notesSchema.post('save', function() {
@@ -27,7 +26,7 @@ notesSchema.post('findByIdAndUpdate', function() {
 
 notesSchema.pre('deleteOne', function() {
   console.log('attempting to delete record:');
-  console.log(this);
+  console.
 });
 
 notesSchema.post('deleteOne', function() {
@@ -36,7 +35,6 @@ notesSchema.post('deleteOne', function() {
 
 notesSchema.pre('find', function() {
   console.log('attempting to find record:');
-  console.log(this);
 });
 
 notesSchema.post('find', function() {
